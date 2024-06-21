@@ -18,7 +18,7 @@ FOLDER="$1"
 ./vcf_intersect.sh "$FOLDER"
 
 # Remove unnecessary data from intersection results
-./cut_info.sh "$FOLDER"
+./cut_data.sh "$FOLDER"
 
 # Combine results into single file
 cd "$FOLDER"
