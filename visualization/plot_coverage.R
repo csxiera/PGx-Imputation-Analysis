@@ -2,11 +2,12 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
+# Select Tier 1 or Tier 2 PGx variant coverage for plotting
 tier_number <- "2"
 
 tier_file_path <- paste0("C:/Users/court/OneDrive/Desktop/UCalgary/Year 4/MDSC 508 - Honours Thesis & Research Communication/Excel Files/Tier ", tier_number, " PharmVar Only.csv")
 
-coverage_file_path <- "C:/Users/court/OneDrive/Desktop/master_coverage_new.csv"
+coverage_file_path <- "C:/Users/court/OneDrive/Desktop/master_coverage.csv"
 
 tier_hap <- read.csv(tier_file_path)
 df <- read.csv(coverage_file_path)
@@ -48,8 +49,8 @@ df_combined$Haplotype<- factor(df_combined$Haplotype, levels = rev(unique(df_com
 
 plot <- ggplot(data = df_combined, aes(x = Dataset, y = Haplotype, fill = factor(Coverage))) +
   geom_tile(color = "black", size = 0.5) +
-  scale_fill_manual(values = c("none" = "white", "partial" = "#95C5F9", "full" = "#0068D7")) +  # Adjust fill colors
-  coord_fixed(ratio = 0.5) + # Height to width ration (1:2)
+  scale_fill_manual(values = c("none" = "white", "partial" = "#95C5F9", "full" = "#0068D7")) +
+  coord_fixed(ratio = 0.5) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1, color = "black"), 
@@ -67,5 +68,5 @@ plot <- ggplot(data = df_combined, aes(x = Dataset, y = Haplotype, fill = factor
   guides(fill = guide_legend(title = NULL))+
   ggtitle(paste0("Tier ", tier_number, " Coverage"))
 
-output_path <- paste0("C:/Users/court/OneDrive/Desktop/Tier ", tier_number, " Coverage Plot Main 2.png")
+output_path <- paste0("C:/Users/court/OneDrive/Desktop/Tier ", tier_number, " Coverage Plot.png")
 ggsave(output_path, plot = plot, width= 8, height = 10, dpi = 300)
