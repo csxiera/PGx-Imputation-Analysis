@@ -15,7 +15,7 @@ cd ~/mdsc508
 
 # Run vcf_intersect.sh script
 FOLDER="$1"
-./vcf_intersect2.sh "$FOLDER"
+./vcf_intersect.sh "$FOLDER"
 
 # Remove unnecessary data from intersection results
 ./cut_info.sh "$FOLDER"
