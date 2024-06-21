@@ -23,3 +23,7 @@ FOLDER="$1"
 # Combine results into single file
 cd "$FOLDER"
 cat *_overlap.txt > overlap_all.txt
+
+# Extract star allele info from mapped variants
+cd ..
+python extract_vars.py "$FOLDER"
