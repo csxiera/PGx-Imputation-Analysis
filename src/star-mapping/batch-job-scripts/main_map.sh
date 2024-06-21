@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=6
 #SBATCH --mem=50G
-#SBATCH --time=12:00:00
+#SBATCH --time=1:00:00
 
 # Activate conda environment
 source ~/software/init-conda
