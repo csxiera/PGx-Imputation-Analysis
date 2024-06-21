@@ -5,9 +5,8 @@ library(tidyr)
 # Select Tier 1 or Tier 2 PGx variant coverage for plotting
 tier_number <- "2"
 
-tier_file_path <- paste0("C:/Users/court/OneDrive/Desktop/UCalgary/Year 4/MDSC 508 - Honours Thesis & Research Communication/Excel Files/Tier ", tier_number, " PharmVar Only.csv")
-
-coverage_file_path <- "C:/Users/court/OneDrive/Desktop/master_coverage.csv"
+tier_file_path <- paste0("../data/Tier ", tier_number, " Haplotypes.csv")
+coverage_file_path <- "../results/master_coverage.csv"
 
 tier_hap <- read.csv(tier_file_path)
 df <- read.csv(coverage_file_path)
@@ -68,5 +67,5 @@ plot <- ggplot(data = df_combined, aes(x = Dataset, y = Haplotype, fill = factor
   guides(fill = guide_legend(title = NULL))+
   ggtitle(paste0("Tier ", tier_number, " Coverage"))
 
-output_path <- paste0("C:/Users/court/OneDrive/Desktop/Tier ", tier_number, " Coverage Plot.png")
+output_path <- paste0("../results/Tier ", tier_number, " Coverage Plot.png")
 ggsave(output_path, plot = plot, width= 8, height = 10, dpi = 300)
