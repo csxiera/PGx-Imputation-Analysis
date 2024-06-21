@@ -22,6 +22,7 @@ output_file = os.path.expanduser(f'~/mdsc508/{dataset_dir}/stars_output.csv')
 
 chromosomes = [7, 10, 12, 13, 19, 22]
 
+# Map star allele definitions to variants in given dataset
 with open(output_file, 'w', newline='') as outfile:
     writer = csv.writer(outfile)
     writer.writerow(['allele', 'gene', 'rsid', 'chr', 'pos', 'dataset'])
@@ -29,7 +30,7 @@ with open(output_file, 'w', newline='') as outfile:
     for chromosome in chromosomes:
         csv_file = os.path.expanduser(f'~/mdsc508/chr_{chromosome}.csv')
 
-        # Store star allele variant definitions
+        # Store star allele variants
         variants = {}
         with open(csv_file, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -41,7 +42,7 @@ with open(output_file, 'w', newline='') as outfile:
                 else:
                     variants[position] = row
 
-        # Check if dataset contains star allele variants and write identified variants to new overlap.txt file
+        # Identify star allele variants present in dataset using variant rsid or position
         with open(txt_file, 'r') as txtfile:
             reader = csv.reader(txtfile, delimiter='\t')
             for row in reader:
