@@ -5,7 +5,7 @@ library(tidyr)
 # Select Tier 1 or Tier 2 PGx variant coverage for plotting
 tier_number <- "2"
 
-tier_file_path <- paste0("../data/Tier ", tier_number, " Haplotypes.csv")
+tier_file_path <- paste0("../data/tier_", tier_number, "_haplotypes.csv")
 coverage_file_path <- "../results/master_coverage.csv"
 
 tier_hap <- read.csv(tier_file_path)
