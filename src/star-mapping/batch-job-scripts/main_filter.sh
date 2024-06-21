@@ -7,11 +7,9 @@
 #SBATCH --mem=32000M
 #SBATCH --time=03:00:00
 
-# Activate conda environment
 source ~/software/init-conda
 conda activate pgx
 
-# Move to directory with filter script
 cd ~/mdsc508
 
 # Run filter script with data folder as argument

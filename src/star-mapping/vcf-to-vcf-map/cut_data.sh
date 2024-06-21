@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Move to directory
 cd $1
 
 # Define the list of genes

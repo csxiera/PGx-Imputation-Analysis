@@ -7,11 +7,9 @@
 #SBATCH --mem=32G
 #SBATCH --time=02:00:00
 
-# Activate conda environment
 source ~/software/init-conda
 conda activate pgx
 
-# Move to directory with normalization script
 cd ~/mdsc508
 
 # Run normalization script with data folder as argument
