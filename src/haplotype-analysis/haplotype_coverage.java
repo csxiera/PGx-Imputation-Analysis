@@ -93,6 +93,7 @@ public HaplotypeCoverage(){}
             e.printStackTrace();
         }
 
+        // Print block debugging
         /*
         for (Map.Entry<String, List<Integer>> entry : vars37Table.entrySet()) {
             String haplotypeName = entry.getKey();
@@ -108,7 +109,6 @@ public HaplotypeCoverage(){}
 
             String line;
             while ((line = matchReader.readLine()) != null) {
-                //System.out.println("Reading line: " + line);
                 String[] columns = line.split(",");
                 String starAllele = columns[0].trim();
                 starAllele = starAllele.replaceAll("^\"|\"$", "");
@@ -119,7 +119,7 @@ public HaplotypeCoverage(){}
                 String dataset = columns[5].trim();
                 dataset = dataset.replaceAll("^\"|\"$", "");
 
-                // Generate haplotype name by concatenating gene and starAllele
+                // Generate haplotype name by concatenating gene and star allele
                 String haplotypeName = gene + starAllele;
 
                 // Get the inner HashMap based on the dataset value
@@ -137,6 +137,7 @@ public HaplotypeCoverage(){}
             e.printStackTrace();
         }
 
+        // Print block debugging
         /*
         for (Map.Entry<String, HashMap<String, List<Integer>>> entry : dataTables.entrySet()) {
             String dataset = entry.getKey();
@@ -165,7 +166,7 @@ public HaplotypeCoverage(){}
             for (String haplotype : haplotypeList) {
                 System.out.println("Checking for: " + haplotype);
                 if (!dataHashMap.containsKey(haplotype)) {
-                    // If haplotype not in datas's hash map, add it with an empty list
+                    // If haplotype not in datasets hash map, add it with an empty list
                     dataTables.get(dataName).put(haplotype, new ArrayList<>());
                 }
             }
