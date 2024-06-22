@@ -9,18 +9,19 @@
 source ~/software/init-conda
 conda activate pgx
 
-cd ~/mdsc508
+FOLDER="$1"
 
 # Run vcf_intersect.sh script
-FOLDER="$1"
-../vcf-to-vcf-map/vcf_intersect.sh "$FOLDER"
+~/PGx-Imputation-Analysis/vcf-to-vcf-map/vcf_intersect.sh "~/pgxproject/$FOLDER"
 
 # Remove unnecessary data from intersection results
-../vcf-to-vcf-map/cut_data.sh "$FOLDER"
+cd ~/PGx-Imputation-Analysis/data/gwas
+~/PGx-Imputation-Analysis/vcf-to-vcf-map/cut_data.sh "$FOLDER"
 
 # Combine results into single file
 cd "$FOLDER"
 cat *_overlap.txt > overlap_all.txt
 
 # Extract star allele info from mapped variants
-../vcf-to-vcf-map/extract_vars.py "$FOLDER"
+cd ..
+~/PGx-Imputation-Analysis/vcf-to-vcf-map/extract_vars.py "$FOLDER"
