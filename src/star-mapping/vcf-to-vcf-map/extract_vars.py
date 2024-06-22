@@ -17,8 +17,8 @@ dataset_names = {
 # Get the dataset name for the given directory
 dataset_name = dataset_names.get(dataset_dir, "Unknown Dataset")
 
-txt_file = os.path.expanduser(f'~/mdsc508/{dataset_dir}/overlap_all.txt')
-output_file = os.path.expanduser(f'~/mdsc508/{dataset_dir}/stars_output.csv')
+txt_file = os.path.expanduser(f'~/PGx-Imputation-Analysis/data/gwas/{dataset_dir}/overlap_all.txt')
+output_file = os.path.expanduser(f'~/PGx-Imputation-Analysis/data/gwas/{dataset_dir}/stars_output.csv')
 
 chromosomes = [7, 10, 12, 13, 19, 22]
 
@@ -28,7 +28,7 @@ with open(output_file, 'w', newline='') as outfile:
     writer.writerow(['allele', 'gene', 'rsid', 'chr', 'pos', 'dataset'])
 
     for chromosome in chromosomes:
-        csv_file = os.path.expanduser(f'~/mdsc508/chr_{chromosome}.csv')
+        csv_file = os.path.expanduser(f'~/PGx-Imputation-Analysis/data/star-allele-defs/chr_{chromosome}.csv')
 
         # Store star allele variants
         variants = {}

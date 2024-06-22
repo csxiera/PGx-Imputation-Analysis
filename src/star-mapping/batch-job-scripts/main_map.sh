@@ -12,7 +12,7 @@ conda activate pgx
 FOLDER="$1"
 
 # Run vcf_intersect.sh script
-~/PGx-Imputation-Analysis/vcf-to-vcf-map/vcf_intersect.sh "~/pgxproject/$FOLDER"
+~/PGx-Imputation-Analysis/vcf-to-vcf-map/vcf_intersect.sh "$FOLDER"
 
 # Remove unnecessary data from intersection results
 cd ~/PGx-Imputation-Analysis/data/gwas
@@ -23,5 +23,4 @@ cd "$FOLDER"
 cat *_overlap.txt > overlap_all.txt
 
 # Extract star allele info from mapped variants
-cd ..
 ~/PGx-Imputation-Analysis/vcf-to-vcf-map/extract_vars.py "$FOLDER"
