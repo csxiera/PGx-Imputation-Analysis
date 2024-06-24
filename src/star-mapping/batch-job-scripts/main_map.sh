@@ -3,7 +3,7 @@
 #SBATCH --error=%j_map.err
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=6
-#SBATCH --mem=50G
+#SBATCH --mem=10G
 #SBATCH --time=1:00:00
 
 source ~/software/init-conda
@@ -23,4 +23,4 @@ cd "$FOLDER"
 cat *_overlap.txt > overlap_all.txt
 
 # Extract star allele info from mapped variants
-~/PGx-Imputation-Analysis/src/star-mapping/vcf-to-vcf-map/extract_vars.py "$FOLDER"
+python ~/PGx-Imputation-Analysis/src/star-mapping/vcf-to-vcf-map/extract_vars.py "$FOLDER"
