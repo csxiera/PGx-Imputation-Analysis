@@ -20,9 +20,6 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 
 Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed. (maybe samtools and vcftools?)
 
-**Note:** Use/modify `clean.sh` in `src` to quickly remove unnecessary files (such as .err and .out files from running batch scripts).
-   - **Usage:** `./clean.sh <folder-to-clean>`
-
 ## VCF-to-VCF based analysis (current method):
 
 1. Navigate to `src/star-mapping/exec`.
@@ -44,6 +41,9 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Usage:** `java HaplotypeDriver.java`
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
+  
+**Tip:** Use/modify `clean.sh` in `src` to quickly remove unnecessary files (such as .err and .out files from running batch scripts)
+   - **Usage:** `./clean.sh <folder-to-clean>`
 
 ## VCF-to-CSV based analysis (previous method used in thesis):
 
