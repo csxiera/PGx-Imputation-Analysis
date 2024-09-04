@@ -1,6 +1,8 @@
 ## Setup
 
-**Note:** Due to GitHub's file size limitations, the GWAS data is not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data` <br>
+**Note:** Due to GitHub's file size limitations, the GWAS data is not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data`. <br>
+
+**Note:** The steps for QC filtering and normalization, outlined at the end of this file, have already been completed. The resulting `_norm.vcf` files, found in the shared folder, are used in the subsequent analyses.
 
 To prevent file path errors, store GWAS data in a directory named `PGx-Data` under the following subdirectories:
 
@@ -16,11 +18,9 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 | `unimputed_s`  | Unimputed, Standard QC                      |
 | `raw`          | Original                                    |
 
-Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed (maybe samtools and vcftools?)
+Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed. (maybe samtools and vcftools?)
 
-**Note:** Details for qc flitering and normalization are detailed at the end of this file. These steps have already been completed and the files are in the shared folder
-
-**Note:** Use/modify `clean.sh` in `src` to quickly remove unnecessary files (such as .err and .out files from running batch scripts)
+**Note:** Use/modify `clean.sh` in `src` to quickly remove unnecessary files (such as .err and .out files from running batch scripts).
    - **Usage:** `./clean.sh <folder-to-clean>`
 
 ## VCF-to-VCF based analysis (current method):
