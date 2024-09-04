@@ -2,7 +2,7 @@
 
 **Note:** Due to GitHub's file size limitations, the GWAS data is not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data` <br>
 
-To prevent file path errors, store GWAS data in a directory named `PGx-Data` with the following folder names:
+To prevent file path errors, store GWAS data in a directory named `PGx-Data` under the following subdirectories:
 
 | Folder Name    | Data Treatment                              |
 |----------------|---------------------------------------------|
@@ -16,7 +16,7 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` wit
 | `unimputed_s`  | Unimputed, Standard QC                      |
 | `raw`          | Original                                    |
 
-Ensure workspace has `bcftools`, `plink2`, `python`, `java`, and `R` are installed (maybe samtools and vcftools?)
+Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed (maybe samtools and vcftools?)
 
 ## To run VCF-to-VCF based analysis (current method):
 
@@ -35,7 +35,7 @@ Ensure workspace has `bcftools`, `plink2`, `python`, `java`, and `R` are install
 
 5. Navigate to `src/haplotype-analysis`.
 
-6. Run haplotype coverage analysis:
+6. Compile and run haplotype coverage analysis:
    - **Usage:** `java HaplotypeDriver.java`
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
@@ -52,3 +52,5 @@ Ensure workspace has `bcftools`, `plink2`, `python`, `java`, and `R` are install
    - **Usage:** `python3 merge.py <output-csv> <data-folder> <??pgx.csv??>`
 
 4. Export the output CSV and add column headers.
+
+**Note:** Use `clean.sh` to remove files such as .err, .out, and .log to keep repository clean
