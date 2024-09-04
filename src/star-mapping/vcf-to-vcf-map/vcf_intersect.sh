@@ -1,8 +1,8 @@
 #!/bin/bash
 
 core_allele_dir="/home/courtney.lenz/PGx-Imputation-Analysis/data/star-allele-defs"
-dose_file_dir="/home/courtney.lenz/pgxproject/$1"
-output_dir="/home/courtney.lenz/PGx-Imputation-Analysis/data/gwas/$1"
+dose_file_dir="/home/courtney.lenz/PGx-Data/$1"
+output_dir="/home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/$1"
 
 # Declare an associative array for genes and their corresponding chrs
 declare -A gene_chromosomes=(
