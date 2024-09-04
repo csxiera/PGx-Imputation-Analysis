@@ -1,5 +1,6 @@
-**Note:** Due to GitHub's file size limitations, the GWAS data is not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data` <br>
+## Setup
 
+**Note:** Due to GitHub's file size limitations, the GWAS data is not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data` <br>
 
 To prevent file path errors, store GWAS data in a directory named `PGx-Data` with the following folder names:
 
@@ -15,7 +16,9 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` wit
 | `unimputed_s`  | Unimputed, Standard QC                      |
 | `raw`          | Original                                    |
 
-## **To run VCF-to-VCF based analysis (current method):**
+Ensure workspace has `bcftools`, `plink2`, `python`, `java`, and `R` are installed (maybe samtools and vcftools?)
+
+## To run VCF-to-VCF based analysis (current method):
 
 1. Navigate to `src/star-mapping/exec`.
 
@@ -37,7 +40,7 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` wit
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
 
-## **To run VCF-to-CSV based analysis (previous method used in thesis):**
+## To run VCF-to-CSV based analysis (previous method used in thesis):
 
 1. Navigate to `src/star-mapping/exec`.
 
