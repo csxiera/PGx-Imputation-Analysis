@@ -1,14 +1,14 @@
 GWAS data is stored in a seperated directory named "PGx-Data" due to file size constraints on Github
-To avoid file path errors, store GWAS data within a PGx-Data directory with the following folder names:
-  1. 1000g_m
-  2. 1000g_m_30x
-  3. 1000g_s
-  4. 1000g_s_30x
-  5. topmed_m
-  6. topmed_s
-  7. unimputed_m
-  8. unimputed_s
-  9. raw
+To avoid file path errors, store GWAS data within a PGx-Data directory using following subfolder names:
+  1. 1000g_m        -> 1000 Genomes Imputation, Modified QC
+  2. 1000g_m_30x    -> 1000 Genomes 30x Imputation, Modified QC
+  3. 1000g_s        -> 1000 Genomes Imputation, Standard QC
+  4. 1000g_s_30x    -> 1000 Genomes 30x Imputation, Standard QC
+  5. topmed_m       -> TopMed Imputation, Modified QC
+  6. topmed_s       -> TopMed Imputation, Standard QC
+  7. unimputed_m    -> Unimputed, Modified QC
+  8. unimputed_s    -> Unimputed, Standard QC
+  9. raw            -> Original Data
 
 To run VCF-to-VCF based analysis (current method):
   1. Navigate to src>star-mapping>exec
