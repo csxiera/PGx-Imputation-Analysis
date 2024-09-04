@@ -18,7 +18,12 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 
 Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed (maybe samtools and vcftools?)
 
-## To run VCF-to-VCF based analysis (current method):
+**Note:** Details for qc flitering and normalization are detailed at the end of this file. These steps have already been completed and the files are in the shared folder
+
+**Note:** Use/modify `clean.sh` in `src` to quickly remove unnecessary files (such as .err and .out files from running batch scripts)
+   - **Usage:** `./clean.sh <folder-to-clean>`
+
+## VCF-to-VCF based analysis (current method):
 
 1. Navigate to `src/star-mapping/exec`.
 
@@ -40,7 +45,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
 
-## To run VCF-to-CSV based analysis (previous method used in thesis):
+## VCF-to-CSV based analysis (previous method used in thesis):
 
 1. Navigate to `src/star-mapping/exec`.
 
@@ -53,4 +58,4 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 4. Export the output CSV and add column headers.
 
-**Note:** Use `clean.sh` to remove files such as .err, .out, and .log to keep repository clean
+## Quality Control Filtering & Normalization
