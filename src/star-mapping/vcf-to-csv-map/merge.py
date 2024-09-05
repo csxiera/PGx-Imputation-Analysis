@@ -17,16 +17,17 @@ def merge_csv_files(input_file_dir, output_file, csv_type):
                 all_rows.append(row)
 
     # Write the merged data to a single CSV file
-    with open(output_file, 'w', newline='') as merged_file:
+    output_file_path = os.path.join(input_file_dir, output_file)
+    with open(output_file_path, 'w', newline='') as merged_file:
         writer = csv.writer(merged_file)
         writer.writerows(all_rows)
 
     print("Merged CSV file saved successfully.")
 
-    with open(output_file, 'r') as file:
+    with open(output_file_path, 'r') as file:
         lines = file.readlines()
 
-    with open(output_file, 'w') as file:
+    with open(output_file_path, 'w') as file:
         for line in lines:
             if line.startswith("CHROM"):
                 file.write(line)
@@ -36,9 +37,16 @@ def merge_csv_files(input_file_dir, output_file, csv_type):
             if not line.startswith("CHROM"):
                 file.write(line)
 
+    # Delete all files ending in "pgx.csv" in the input directory
+    for file_name in os.listdir(input_file_dir):
+        if file_name.endswith("pgx.csv"):
+            file_path = os.path.join(input_file_dir, file_name)
+            os.remove(file_path)
+            print(f"Deleted file: {file_path}")
+
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: python script.py <output_file.csv> <folder> <.csv type>")
+        print("Usage: python script.py <output_file> <folder> <.csv type>")
         sys.exit(1)
 
     output_file_name = sys.argv[1]

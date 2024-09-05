@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if correct number of arguments are passed
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <chromosome_number> <directory>"
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <chromosome_number> <directory> <build>"
     exit 1
 fi
 

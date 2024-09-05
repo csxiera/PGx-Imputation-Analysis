@@ -42,7 +42,7 @@ find_stars(){
 export -f find_stars
 
 # Run the find_stars function in parallel for each chromosome
-parallel -j 6 find_stars {} "$folder" ::: "${chromosomes[@]}"
+parallel -j 6 find_stars {} "$folder" "$build" ::: "${chromosomes[@]}"
 
 cd "$data_dir"
 

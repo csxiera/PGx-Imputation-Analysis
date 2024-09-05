@@ -18,7 +18,7 @@ dataset_names = {
 dataset_name = dataset_names.get(dataset_dir, "Unknown Dataset")
 
 txt_file = os.path.expanduser(f'/home/courtney.lenz/PGx-Imputation-Analysis/data/gwas/{dataset_dir}/overlap_all.txt')
-output_file = os.path.expanduser(f'/home/courtney.lenz/PGx-Imputation-Analysis/data/gwas/{dataset_dir}/stars_output.csv')
+output_file = os.path.expanduser(f'/home/courtney.lenz/PGx-Imputation-Analysis/data/gwas/{dataset_dir}/stars_vcf_map.csv')
 
 chromosomes = [7, 10, 12, 13, 19, 22]
 
