@@ -2,7 +2,7 @@
 
 **Note:** Due to GitHub's file size limitations, the GWAS data and reference genomes are not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data`. <br>
 
-**Note:** The steps for QC filtering and normalization, outlined at the end of this file, have already been completed. The resulting `_norm.vcf` files, found in the shared folder, are used in the subsequent analyses.
+**Note:** The steps for QC filtering and normalization, outlined at the end of this file, have already been completed. The resulting `norm.vcf` files, found in the shared folder, are used in the subsequent analyses.
 
 To prevent file path errors, store GWAS data in a directory named `PGx-Data` under the following subdirectories:
 
@@ -19,7 +19,8 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 | `raw`          | Original GWAS Data                          |
 | `references`   | Human Reference Genomes                     |
 
-Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed. (maybe samtools and vcftools?)
+Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, and `java` are installed.
+
 
 ## VCF-to-VCF mapping (current method)
 
@@ -50,7 +51,8 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_stars.csv`
    - **Output Location:** `results`
 
-**Note:** The PharmVar CSV files were split by chromosome for this method. Unimputed data must use the GRCh37 build files and all imputed data must use the GRCh38 build files.<br>
+**Note:** The PharmVar CSV files were split by chromosome for this method. Unimputed data must use the GRCh37 build files and all imputed data must use the GRCh38 build files.
+
 
 ## Haplotype Analysis
 
@@ -62,6 +64,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Usage:** `java HaplotypeDriver.java`
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
+
   
 ## Other
 
@@ -73,6 +76,7 @@ Other useful programs can be founbd in the `src/data-processing/exec` folder:
 | `unzip.sh`        | Unzips files downloaded from the imputation server   | `sbatch unzip.sh <data-folder> <password>`   |
 | `merge_cores.sh`  | Removes non-core alleles from PharmVar VCF data and merges core alleles into a single file   | `./merge_cores.sh`   |
 | `main_extract.sh` | Extracts HWE (Hardy-Weinberg Equilibrium), MAF (Minor Allele Frequency), and MISS (missingness) values for each variant   | `sbatch main_extract <data-folder>`   |
+
 
 ## Quality Control Filtering & Normalization
 
