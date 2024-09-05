@@ -21,8 +21,10 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 
 Both `PGx-Data` and `PGx-Imputation-Analysis` directories must be in the same main/home folder
 
-Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, and `java` are installed.
+Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, and `java` are installed. To use a different conda environment, the conda activation line in all executable batch scripts must be changed:<br>
 
+&emsp;&ensp;&nbsp;`source ~/software/init-conda`<br>
+--> `conda activate <env-name>`
 
 ## VCF-to-VCF mapping (current method)
 
