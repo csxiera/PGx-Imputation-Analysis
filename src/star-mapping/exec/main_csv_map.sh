@@ -18,5 +18,5 @@ FOLDER="$1"
 ./find_stars.sh "$FOLDER"
 
 # Merge star variants from each chr into single csv file
-OUTPUT="${FOLDER}_stars.csv"
-python merge.py "$OUTPUT" "$FOLDER" *pgx.csv
+OUTPUT="${FOLDER}_stars_output2.csv"
+python merge.py "$OUTPUT" "$FOLDER" pgx.csv

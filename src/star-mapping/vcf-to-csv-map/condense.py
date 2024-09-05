@@ -36,8 +36,10 @@ if __name__ == "__main__":
     folder = sys.argv[2]
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_file_path = os.path.join(script_dir, '..', '..', 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_stars.csv')
-    output_file_path = os.path.join(script_dir, '..', '..', 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_pgx.csv')
+    base_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
+
+    input_file_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_stars.csv')
+    output_file_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_pgx.csv')
 
     #current_directory = os.getcwd()
     #print("Current directory for condense:", current_directory)

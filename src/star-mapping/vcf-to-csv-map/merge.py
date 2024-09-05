@@ -2,9 +2,9 @@ import os
 import csv
 import sys
 
-def merge_csv_files(output_file, csv_type):
+def merge_csv_files(input_file_dir, output_file, csv_type):
     # Get list of CSV files in the current directory
-    csv_files = [file for file in os.listdir('.') if file.endswith(csv_type)]
+    csv_files = [os.path.join(input_file_dir, file) for file in os.listdir(input_file_dir) if file.endswith(csv_type)]
 
     # Initialize an empty list to store rows from all CSV files
     all_rows = []
@@ -14,12 +14,12 @@ def merge_csv_files(output_file, csv_type):
         with open(file_name, 'r', newline='') as csv_file:
             reader = csv.reader(csv_file)
             for row in reader:
-           	    all_rows.append(row)
+                all_rows.append(row)
 
-        # Write the merged data to a single CSV file
-        with open(output_file, 'w', newline='') as merged_file:
-            writer = csv.writer(merged_file)
-            writer.writerows(all_rows)
+    # Write the merged data to a single CSV file
+    with open(output_file, 'w', newline='') as merged_file:
+        writer = csv.writer(merged_file)
+        writer.writerows(all_rows)
 
     print("Merged CSV file saved successfully.")
 
@@ -37,20 +37,17 @@ def merge_csv_files(output_file, csv_type):
                 file.write(line)
 
 if __name__ == "__main__":
-    
     if len(sys.argv) != 4:
         print("Usage: python script.py <output_file.csv> <folder> <.csv type>")
         sys.exit(1)
 
     output_file_name = sys.argv[1]
-    directory = sys.argv[2]
+    folder = sys.argv[2]
     csv_type = sys.argv[3]
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    os.chdir(os.path.join(script_dir, directory))
-    current_directory = os.getcwd()
+    base_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
-    print("Current directory for merge:", current_directory)
+    input_file_dir = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder)
 
-    merge_csv_files(output_file_name, csv_type)
-
+    merge_csv_files(input_file_dir, output_file_name, csv_type)

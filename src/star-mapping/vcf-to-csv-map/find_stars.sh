@@ -6,10 +6,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 #source_dir=~/PGx-Imputation-Analysis/data/star-allele-defs/
-data_dir=~/PGx-Data/"$1"
-
-#cp "$source_dir"/*.csv "$data_dir"
-######cp *.csv ~/PGx-Data/"$directory"
+folder="$1"
 
 chromosomes=(7 10 12 13 19 22)
 
@@ -17,8 +14,6 @@ chromosomes=(7 10 12 13 19 22)
 find_stars(){
     local chr="$1"
     local dir="$2"
-
-    echo "Directory received in find_stars function: $dir"
 
     # Step 1: Extract all variants from VCF present in '*' list
     ./extract.sh "$chr" "$dir"
@@ -39,7 +34,7 @@ find_stars(){
 export -f find_stars
 
 # Run the find_stars function in parallel for each chromosome
-parallel -j 6 find_stars {} "$data_dir" ::: "${chromosomes[@]}"
+parallel -j 6 find_stars {} "$folder" ::: "${chromosomes[@]}"
 
 cd "$data_dir"
 

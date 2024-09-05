@@ -33,9 +33,11 @@ if __name__ == "__main__":
     folder = sys.argv[2]
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    file1_path = os.path.join(script_dir, '..', '..', 'PGx-Imputation-Analysis', 'data', 'star-allele-defs', f'chr_{chrom}.csv')
-    file2_path = os.path.join(script_dir, '..', '..', 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_matches.csv')
-    output_file_path = os.path.join(script_dir, '..', '..', 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_stars.csv')
+    base_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
+
+    file1_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'star-allele-defs', f'chr_{chrom}.csv')
+    file2_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_matches.csv')
+    output_file_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_stars.csv')
     
     #current_directory = os.getcwd()
     #print("Current directory for get_stars:", current_directory)
