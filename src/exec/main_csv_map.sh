@@ -19,4 +19,4 @@ FOLDER="$1"
 
 # Merge star variants from each chr into single csv file
 OUTPUT="stars_csv_map.csv"
-python merge.py "$OUTPUT" "$FOLDER" pgx.csv
+python merge.py "$OUTPUT" "$FOLDER" stars.csv

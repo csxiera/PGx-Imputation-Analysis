@@ -4,10 +4,10 @@ import sys
 
 def get_file_paths(input_type):
     if input_type == 'stars_csv_map':
-        master_csv = os.path.expanduser('~/PGx_Imputation-Analysis/results/master_stars_vcf_to_csv.csv')
+        master_csv = os.path.expanduser('~/PGx-Imputation-Analysis/results/master_stars_vcf_to_csv.csv')
         stars_output_filename = 'stars_csv_map.csv'
     elif input_type == 'stars_vcf_map':
-        master_csv = os.path.expanduser('~/PGx_Imputation-Analysis/results/master_stars_vcf_to_vcf.csv')
+        master_csv = os.path.expanduser('~/PGx-Imputation-Analysis/results/master_stars_vcf_to_vcf.csv')
         stars_output_filename = 'stars_vcf_map.csv'
     else:
         raise ValueError("Invalid input type. Must be 'stars_csv_map' or 'stars_vcf_map'.")
@@ -15,7 +15,7 @@ def get_file_paths(input_type):
     return master_csv, stars_output_filename
 
 def merge_to_master(input_type):
-    datasets = ["1000g_s_30x", "1000g_m_30x", "1000g_s", "1000g_m", "topmed_s", "topmed_m"]
+    datasets = ["1000g_s_30x", "1000g_m_30x", "1000g_s", "1000g_m", "topmed_s", "topmed_m", "unimputed_m", "unimputed_s", "raw"]
 
     # Get the master CSV file and stars_output filename based on the input type
     master_csv, stars_output_filename = get_file_paths(input_type)
@@ -37,8 +37,6 @@ def merge_to_master(input_type):
                     # Write the rows to the master CSV file
                     for row in reader:
                         writer.writerow(row)
-            else:
-                print(f"File {stars_output_csv} does not exist.")
 
     print(f"Merged data into {master_csv} successfully.")
 

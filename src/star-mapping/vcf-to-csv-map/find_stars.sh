@@ -31,11 +31,6 @@ find_stars(){
     # Step 2: Combine extracted variants with associated '*'s
     python get_stars.py "$chr" "$dir" "$build"
 
-    wait
-
-    # Step 3: Combine all '*'s for each position into 1 row each
-    python condense.py "$chr" "$dir"
-
     echo "Stars identified for chr '$chr'"
 }
 
@@ -46,5 +41,5 @@ parallel -j 6 find_stars {} "$folder" "$build" ::: "${chromosomes[@]}"
 
 cd "$data_dir"
 
-# Remove all .csv files except for those ending with pgx.csv
-find . -maxdepth 1 -type f -name "*.csv" ! -name "*pgx.csv" -exec rm -f {} +
+# Remove all .csv files except for those ending with stars.csv
+find . -maxdepth 1 -type f -name "*.csv" ! -name "*stars.csv" -exec rm -f {} +

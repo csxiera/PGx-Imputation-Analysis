@@ -1,6 +1,4 @@
 #!/bin/bash
-cd "$1"
-echo "Cleaning $1"
 
 rm *.err
 rm *.out

@@ -19,6 +19,7 @@ def compare_csv_files(file1, file2, output):
         for row in csv_reader:
             position = row[4]  # Assuming position is in the 5th column
             if position in positions_file2:
+                row[0] = '*' + row[0].split('*')[-1]
                 matching_rows.append(row)
 
     # Write matching rows to the output file

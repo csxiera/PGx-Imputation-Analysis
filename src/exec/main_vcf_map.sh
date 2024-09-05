@@ -15,7 +15,7 @@ FOLDER="$1"
 ~/PGx-Imputation-Analysis/src/star-mapping/vcf-to-vcf-map/vcf_intersect.sh "$FOLDER"
 
 # Remove unnecessary data from intersection results
-cd ~/PGx-Imputation-Analysis/data/gwas
+cd ~/PGx-Imputation-Analysis/data/output-files
 ~/PGx-Imputation-Analysis/src/star-mapping/vcf-to-vcf-map/clean_data.sh "$FOLDER"
 
 # Combine results into single file
