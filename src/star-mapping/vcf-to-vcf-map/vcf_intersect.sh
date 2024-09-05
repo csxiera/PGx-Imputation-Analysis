@@ -1,8 +1,8 @@
 #!/bin/bash
 
-core_allele_dir="/home/courtney.lenz/PGx-Imputation-Analysis/data/star-allele-defs"
-dose_file_dir="/home/courtney.lenz/PGx-Data/$1"
-output_dir="/home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/$1"
+core_allele_dir=~/PGx-Imputation-Analysis/data/star-allele-defs
+data_dir=~/PGx-Data/"$1"
+output_dir=~/PGx-Imputation-Analysis/data/output-files/"$1"
 
 # Declare an associative array for genes and their corresponding chrs
 declare -A gene_chromosomes=(
@@ -25,7 +25,7 @@ process_gene() {
 
     # Run bedtools intersect
     bedtools intersect -a ${core_allele_dir}/${gene}/${gene}_corealleles.vcf.gz \
-                       -b ${dose_file_dir}/chr${chromosome}_norm.vcf.gz \
+                       -b ${data_dir}/chr${chromosome}_norm.vcf.gz \
                        -wb -loj > ${output_dir}/${gene}_overlap.txt
 
     echo "Intersection completed for $gene. Output saved to ${gene}_overlap.txt"
@@ -33,7 +33,7 @@ process_gene() {
 
 export -f process_gene
 export core_allele_dir
-export dose_file_dir
+export data_dir
 export output_dir
 
 # Create a list of gene:chr pairs
