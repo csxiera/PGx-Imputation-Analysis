@@ -59,47 +59,10 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Usage:** `java HaplotypeDriver.java`
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
-
-## Quality Control Filtering & Normalization
-
-**Note:** All QC and imputation is run from the `src/data-processing/exec` folder
-
-Pre-imputation: 
-
-1. General QC filtering using PLINK2 (applied for all qc methods):
-   a. Get variant information
-      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --freq --out maf`
-   b. Keep individuals who passed QC in clozin study
-      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1`
-   c. Remove high SNP missingness
-      - **Ex.** `plink2 --bfile g_qc1 --geno 0.1 --make-bed --out g_qc2`
-
-2. Standard QC filtering using PLINK2
-   a. Remove MAF < 0.01:
-      - **Ex.** `plink2 --bfile g_qc2 --maf 0.01 --make-bed --out s_qc3`
-
-# G-QC1: Keep individuals who passed QC in clozin study
-plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1
-
-# G-QC2: Remove high SNP missingness:
-plink2 --bfile g_qc1 --geno 0.1 --make-bed --out g_qc2
-
-Post-imputation:
-
-   1. Apply rsq filter to imputed data:
-      - **Usage:** `sbatch main_filter.sh <data-folder>`
-      - **Output:** `filtered.vcf.gz` for each chromosome
-
-   2. Normalize filtered data:
-      - **Usage:** `sbatch main_norm<#>.sh <data-folder>`
-      - **Output:** `norm.vcf.gz` for each chromosome
-      - **Ex.** `sbatch main_norm38.sh topmed_s`
-
-**Note:** Normalization can be performed using either GRCh37 or GRCh38 reference builds.
-
+  
 ## Other
 
-Other useful programs in the `src/data-processing` folder:
+Other useful programs can be founbd in the `src/data-processing/exec` folder:
 
 | Program Name      | Description                 | Usage                           |
 |-------------------|----------------------------|---------------------------------|
@@ -107,5 +70,55 @@ Other useful programs in the `src/data-processing` folder:
 | `unzip.sh`        | Unzips files downloaded from the imputation server   | `sbatch unzip.sh <data-folder> <password>`   |
 | `merge_cores.sh`  | Removes non-core alleles from PharmVar VCF data and merges core alleles into a single file   | `./merge_cores.sh`   |
 | `main_extract.sh` | Extracts HWE (Hardy-Weinberg Equilibrium), MAF (Minor Allele Frequency), and MISS (missingness) values for each variant   | `sbatch main_extract <data-folder>`   |
+
+## Quality Control Filtering & Normalization
+
+**Note:** All QC and imputation is run from the `src/data-processing/exec` folder
+
+### Pre-imputation: 
+
+1. General QC filtering procedure:
+   a. Get variant information
+      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --freq --out maf`
+   b. Keep individuals who passed QC in clozin study
+      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1`
+   c. Remove high SNP missingness
+      - **Ex.** `plink2 --bfile g_qc1 --geno 0.1 --make-bed --out g_qc2`
+
+2a. Standard QC filtering procedure (applied after general QC):
+   a. Remove MAF < 0.01:
+      - **Ex.** `plink2 --bfile g_qc2 --maf 0.01 --make-bed --out s_qc3`
+   b. Check for and remove Hardy-Weinberg deviations:
+      - **Ex.** `plink2 --bfile s_qc3 --hardy midp --hwe 10e-4 midp --make-bed --out s_qc4`
+   c. Exclude sex chromosomes
+      - **Ex.** `plink2 --bfile s_qc4 --autosome --make-bed --out s_qc5`
+   d. Create frequency file
+      - **Ex.** `plink2 --bfile s_qc5 --freq --out f_qc5`
+  
+2b. Modified QC filtering procedure (applied after general QC):
+   a. Exclude sex chromosomes
+       - **Ex.** `plink2 --bfile g_qc2 --autosome --make-bed --out m_qc3`
+   b. Create frequency file
+       - **Ex.** `plink2 --bfile m_qc3 --freq --out f_qc3`
+
+3. Convert to VCF and split by chromosome.
+     - **Note**: Filtered files should follow the `chr${chr}_filtered.vcf.gz` naming convention
+   
+4. Normalize and split multialleleics.
+      - **Usage:** `sbatch main_norm37.sh <data-folder>`
+      - **Output:** `norm.vcf.gz` files for each chromosome 
+
+### Post-imputation:
+
+   1. Apply rsq filter to imputed data:
+      - **Usage:** `sbatch main_filter.sh <data-folder>`
+      - **Output:** `filtered.vcf.gz` files for each chromosome
+
+   2. Normalize filtered data:
+      - **Usage:** `sbatch main_norm<#>.sh <data-folder>`
+      - **Output:** `norm.vcf.gz` files for each chromosome
+      - **Ex.** `sbatch main_norm38.sh topmed_s`
+
+**Note:** Normalization can be performed using either GRCh37 or GRCh38 reference builds.
 
 
