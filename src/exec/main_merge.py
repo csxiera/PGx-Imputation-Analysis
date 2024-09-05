@@ -16,16 +16,19 @@ def get_file_paths(input_type):
 
 def merge_to_master(input_type):
     datasets = ["1000g_s_30x", "1000g_m_30x", "1000g_s", "1000g_m", "topmed_s", "topmed_m", "unimputed_m", "unimputed_s", "raw"]
+    header = ['allele', 'gene', 'rsid', 'chr', 'pos', 'dataset']
 
     # Get the master CSV file and stars_output filename based on the input type
     master_csv, stars_output_filename = get_file_paths(input_type)
 
-    # Open the master CSV file in append mode
-    with open(master_csv, 'a', newline='') as master_file:
+    with open(master_csv, 'w', newline='') as master_file:
         writer = csv.writer(master_file)
 
+        if os.stat(master_csv).st_size == 0:
+            writer.writerow(header)
+
         for dataset in datasets:
-            stars_output_csv = os.path.expanduser(f'~/PGx_Imputation-Analysis/data/output-files/{dataset}/{stars_output_filename}')
+            stars_output_csv = os.path.expanduser(f'~/PGx-Imputation-Analysis/data/output-files/{dataset}/{stars_output_filename}')
 
             if os.path.exists(stars_output_csv):
                 with open(stars_output_csv, 'r') as stars_output_file:
