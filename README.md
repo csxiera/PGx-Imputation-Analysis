@@ -77,34 +77,34 @@ Other useful programs can be founbd in the `src/data-processing/exec` folder:
 
 ### Pre-imputation: 
 
-1. General QC filtering procedure:
-   a. Get variant information
+1. General QC filtering procedure:<br>
+   - Get variant information  
       - **Ex.** `plink2 --bfile gsa2018_clozinID4 --freq --out maf`
-   b. Keep individuals who passed QC in clozin study
-      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1`
-   c. Remove high SNP missingness
+   - Keep individuals who passed QC in clozin study  
+      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1`<br>
+   - Remove high SNP missingness  
       - **Ex.** `plink2 --bfile g_qc1 --geno 0.1 --make-bed --out g_qc2`
 
-2a. Standard QC filtering procedure (applied after general QC):
-   a. Remove MAF < 0.01:
+2. Standard QC filtering procedure (applied after general QC):
+   - Remove MAF < 0.01  
       - **Ex.** `plink2 --bfile g_qc2 --maf 0.01 --make-bed --out s_qc3`
-   b. Check for and remove Hardy-Weinberg deviations:
+   - Check for and remove Hardy-Weinberg deviations  
       - **Ex.** `plink2 --bfile s_qc3 --hardy midp --hwe 10e-4 midp --make-bed --out s_qc4`
-   c. Exclude sex chromosomes
+   - Exclude sex chromosomes  
       - **Ex.** `plink2 --bfile s_qc4 --autosome --make-bed --out s_qc5`
-   d. Create frequency file
+   - Create frequency file  
       - **Ex.** `plink2 --bfile s_qc5 --freq --out f_qc5`
-  
-2b. Modified QC filtering procedure (applied after general QC):
-   a. Exclude sex chromosomes
-       - **Ex.** `plink2 --bfile g_qc2 --autosome --make-bed --out m_qc3`
-   b. Create frequency file
-       - **Ex.** `plink2 --bfile m_qc3 --freq --out f_qc3`
 
-3. Convert to VCF and split by chromosome.
+3. Modified QC filtering procedure (applied after general QC):<br>
+   - Exclude sex chromosomes  
+      - **Ex.** `plink2 --bfile g_qc2 --autosome --make-bed --out m_qc3`<br>
+   - Create frequency file  
+      - **Ex.** `plink2 --bfile m_qc3 --freq --out f_qc3`
+
+4. Convert to VCF and split by chromosome.
      - **Note**: Filtered files should follow the `chr${chr}_filtered.vcf.gz` naming convention
    
-4. Normalize and split multialleleics.
+5. Normalize and split multialleleics.
       - **Usage:** `sbatch main_norm37.sh <data-folder>`
       - **Output:** `norm.vcf.gz` files for each chromosome 
 
