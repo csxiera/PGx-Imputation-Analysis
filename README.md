@@ -26,11 +26,11 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 &emsp;&ensp;&nbsp;`source ~/software/init-conda`<br>
 --> `conda activate <env-name>`
 
-**Note:** All user-executed batch scripts are located in the `exec` subfolders. These are the primary scripts you will need to run manually. Other supporting programs and scripts are executed by these main scripts.
+**Note:** All user-executed batch scripts are located in the `src/exec` subfolder. Other supporting programs and scripts are executed by these main scripts.
 
 ## VCF-to-VCF mapping (current method)
 
-1. Navigate to `src/star-mapping/exec`.
+1. Navigate to `src/exec`.
 
 2. Map PharmVar VCF files to GWAS data:
    - **Usage:** `sbatch main_vcf_map.sh <data-folder>`
@@ -39,21 +39,21 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 3. Repeat the mapping process for all data folders.
 
 4. Merge output files into a master file:
-   - **Usage:** `python merge_master.py`
+   - **Usage:** `python main_merge.py`
    - **Output:** `master_stars.csv`
    - **Output Location:** `results`
 
 
 ## VCF-to-CSV mapping (previous method used in thesis)
 
-1. Navigate to `src/star-mapping/exec`.
+1. Navigate to `src/exec`.
 
 2. Map PharmVar CSV files to GWAS data:
    - **Usage:** `sbatch main_csv_map.sh <data-folder>`
    - **Output:** `stars_output2.csv`
 
 4. Merge output files into a master file:
-   - **Usage:** `python merge_master.py`
+   - **Usage:** `python main_merge.py`
    - **Output:** `master_stars.csv`
    - **Output Location:** `results`
 
@@ -64,7 +64,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 1. Map star allele variants using either method above
    
-2. Navigate to `src/haplotype-analysis`.
+2. Navigate to `src/exec`.
 
 3. Compile and run haplotype coverage analysis:
    - **Usage:** `java HaplotypeDriver.java`
@@ -74,7 +74,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
   
 ## Other
 
-Other useful programs can be founbd in the `src/data-processing/exec` folder:
+Other useful programs in the `src/exec` folder:
 
 | Program Name      | Description                 | Usage                           |
 |-------------------|----------------------------|---------------------------------|
@@ -85,8 +85,6 @@ Other useful programs can be founbd in the `src/data-processing/exec` folder:
 
 
 ## Quality Control Filtering & Normalization
-
-**Note:** All QC and imputation is run from the `src/data-processing/exec` folder.
 
 ### Pre-imputation: 
 
@@ -123,11 +121,13 @@ Other useful programs can be founbd in the `src/data-processing/exec` folder:
 
 ### Post-imputation:
 
-   1. Apply rsq filter to imputed data:
+   1. Navigate to `src/exec`
+
+   2. Apply rsq filter to imputed data:
       - **Usage:** `sbatch main_filter.sh <data-folder>`
       - **Output:** `filtered.vcf.gz` files for each chromosome
 
-   2. Normalize filtered data:
+   3. Normalize filtered data:
       - **Usage:** `sbatch main_norm<#>.sh <data-folder>`
       - **Output:** `norm.vcf.gz` files for each chromosome
       - **Ex.** `sbatch main_norm38.sh topmed_s`
