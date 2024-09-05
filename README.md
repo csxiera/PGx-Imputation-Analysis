@@ -46,6 +46,8 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 ## VCF-to-CSV mapping (previous method used in thesis)
 
+**Note:** This method is considerably slower and memory intensive than the previous one. The memory and time allocated for the job may need to be adjusted in the `main_csv_map.sh` script.
+
 1. Navigate to `src/exec`.
 
 2. Map PharmVar CSV files to GWAS data:
@@ -65,9 +67,6 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
       - PharmVar build 37: 42522613-42525755
       - PharmVar build 38: 42127941-42126611
       - 1000G Standard build 38: 15166841-16575950
-
-**Note:** This method is considerably slower and memory intensive than the previous one. The memory and time allocated for the job may need to be adjusted in the `main_csv_map.sh` script.
-
 
 ## Haplotype Analysis
 
