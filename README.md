@@ -78,12 +78,13 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 Other useful programs in the `src/exec` folder:
 
-| Program Name      | Description                 | Usage                           |
-|-------------------|----------------------------|---------------------------------|
+| Program Name      | Description                          | Usage                                      |
+|-------------------|--------------------------------------|--------------------------------------------|
 | `download.sh`     | Downloads files from the imputation server   | Modify wget urls and run `sbatch download.sh <data-folder>`   |
-| `unzip.sh`        | Unzips files downloaded from the imputation server   | `sbatch unzip.sh <data-folder> <password>`   |
+| `unzip.sh`        | Unzips files downloaded from the imputation server   | `sbatch unzip.sh <data-folder> <password>` |
 | `merge_cores.sh`  | Removes non-core alleles from PharmVar VCF data and merges core alleles into a single file   | `./merge_cores.sh`   |
 | `main_extract.sh` | Extracts HWE (Hardy-Weinberg Equilibrium), MAF (Minor Allele Frequency), and MISS (missingness) values for each variant   | `sbatch main_extract <data-folder>`   |
+| `clean.sh`        | Removes unneeded logging files (such as `.err` and `.out` from submitting batch scripts)   | Modify files to remove and run `./clean.sh <folder>`   |
 
 
 ## Quality Control Filtering & Normalization
