@@ -46,8 +46,6 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 ## VCF-to-CSV mapping (previous method used in thesis)
 
-**Note:** This method is considerably slower and memory intensive than the previous one. The memory and time allocated for the job may need to be adjusted in the `main_csv_map.sh` script.
-
 1. Navigate to `src/exec`.
 
 2. Map PharmVar CSV files to GWAS data:
@@ -60,6 +58,15 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Usage:** `python main_merge.py stars_csv_map`
    - **Output:** `master_stars_vcf_to_csv.csv`
    - **Output Location:** `results`
+  
+**BUG:** The positions in 1000G VCF files do not align with PharmVar positions for either build 37 or 38, and the 1000G files lack rsid values. As a result, this method cannot be used to map 1000G build 38 data. 1000G build 37 data can be successfully mapped using this method, which was originally used in thesis.<br>
+
+   - **Ex.** BP Position Ranges for Chr 22:
+      - PharmVar build 37: 42522613-42525755
+      - PharmVar build 38: 42127941-42126611
+      - 1000G Standard build 38: 15166841-16575950
+
+**Note:** This method is considerably slower and memory intensive than the previous one. The memory and time allocated for the job may need to be adjusted in the `main_csv_map.sh` script.
 
 
 ## Haplotype Analysis
