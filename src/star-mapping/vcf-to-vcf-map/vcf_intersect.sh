@@ -10,7 +10,7 @@ if [[ "$1" == "raw" || "$1" == "unimputed_s" || "$1" == "unimputed_m" ]]; then
 else
     build="38"
 fi
-echo "Detected build${build} for folder: $1"
+echo "Detected build ${build} for folder: $1"
 
 # Declare an associative array for genes and their corresponding chrs
 declare -A gene_chromosomes=(
@@ -32,7 +32,7 @@ process_gene() {
     echo "Processing $gene on chromosome $chromosome..."
 
     # Run bedtools intersect
-    bedtools intersect -a $${core_allele_dir}/${gene}/${gene}_corealleles${build}.vcf.gz \
+    bedtools intersect -a ${core_allele_dir}/${gene}/${gene}_corealleles${build}.vcf.gz \
                        -b ${data_dir}/chr${chromosome}_norm.vcf.gz \
                        -wb -loj > ${output_dir}/${gene}_overlap.txt
 
@@ -43,6 +43,7 @@ export -f process_gene
 export core_allele_dir
 export data_dir
 export output_dir
+export build
 
 # Create a list of gene:chr pairs
 gene_chromosomes_list=()
