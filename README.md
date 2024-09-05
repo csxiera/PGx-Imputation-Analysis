@@ -34,7 +34,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 2. Map PharmVar VCF files to GWAS data:
    - **Usage:** `sbatch main_vcf_map.sh <data-folder>`
-   - **Output:** `stars_output.csv`
+   - **Output:** `stars_vcf_map.csv`
 
 3. Repeat the mapping process for all data folders.
 
@@ -46,11 +46,13 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 
 ## VCF-to-CSV mapping (previous method used in thesis)
 
+**Note:** This method is considerably slower and memory intensive than the previous one. The memory and time allocated for the job may need to be adjusted in the `main_csv_map.sh` script.
+
 1. Navigate to `src/exec`.
 
 2. Map PharmVar CSV files to GWAS data:
    - **Usage:** `sbatch main_csv_map.sh <data-folder>`
-   - **Output:** `stars_output2.csv`
+   - **Output:** `stars_csv_map.csv`
 
 4. Merge output files into a master file:
    - **Usage:** `python main_merge.py`
