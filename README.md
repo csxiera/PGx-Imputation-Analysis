@@ -50,6 +50,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output Location:** `results`
 
 ## Haplotype Analysis
+
 1. Map star allele variants using either method above
    
 2. Navigate to `src/haplotype-analysis`.
@@ -59,9 +60,46 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
 
+## Quality Control Filtering & Normalization
+
+**Note:** All QC and imputation is run from the `src/data-processing/exec` folder
+
+Pre-imputation: 
+
+1. General QC filtering using PLINK2 (applied for all qc methods):
+   a. Get variant information
+      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --freq --out maf`
+   b. Keep individuals who passed QC in clozin study
+      - **Ex.** `plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1`
+   c. Remove high SNP missingness
+      - **Ex.** `plink2 --bfile g_qc1 --geno 0.1 --make-bed --out g_qc2`
+
+2. Standard QC filtering using PLINK2
+   a. Remove MAF < 0.01:
+      - **Ex.** `plink2 --bfile g_qc2 --maf 0.01 --make-bed --out s_qc3`
+
+# G-QC1: Keep individuals who passed QC in clozin study
+plink2 --bfile gsa2018_clozinID4 --keep keep_ind.txt --make-bed --out g_qc1
+
+# G-QC2: Remove high SNP missingness:
+plink2 --bfile g_qc1 --geno 0.1 --make-bed --out g_qc2
+
+Post-imputation:
+
+   1. Apply rsq filter to imputed data:
+      - **Usage:** `sbatch main_filter.sh <data-folder>`
+      - **Output:** `filtered.vcf.gz` for each chromosome
+
+   2. Normalize filtered data:
+      - **Usage:** `sbatch main_norm<#>.sh <data-folder>`
+      - **Output:** `norm.vcf.gz` for each chromosome
+      - **Ex.** `sbatch main_norm38.sh topmed_s`
+
+**Note:** Normalization can be performed using either GRCh37 or GRCh38 reference builds.
+
 ## Other
 
-Other useful programs can be found in the `src/data-processing` folder:
+Other useful programs in the `src/data-processing` folder:
 
 | Program Name      | Description                 | Usage                           |
 |-------------------|----------------------------|---------------------------------|
@@ -70,4 +108,4 @@ Other useful programs can be found in the `src/data-processing` folder:
 | `merge_cores.sh`  | Removes non-core alleles from PharmVar VCF data and merges core alleles into a single file   | `./merge_cores.sh`   |
 | `main_extract.sh` | Extracts HWE (Hardy-Weinberg Equilibrium), MAF (Minor Allele Frequency), and MISS (missingness) values for each variant   | `sbatch main_extract <data-folder>`   |
 
-## Quality Control Filtering & Normalization
+
