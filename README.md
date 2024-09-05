@@ -50,10 +50,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_stars.csv`
    - **Output Location:** `results`
 
-**Note:** PharmVar csv files were split by chromosome for this method. Unimputed data must use the GRCh37 build files and all imputed data must use the GRCh38 build files.<br> 
-The following line was used to split these files:
-   - **Ex.** awk -F ',' '{print > "chr_"$4".csv"}' pharmvar_variants_38.csv
-
+**Note:** PharmVar csv files were split by chromosome for this method. Unimputed data must use the GRCh37 build files and all imputed data must use the GRCh38 build files.<br>
 
 ## Haplotype Analysis
 
