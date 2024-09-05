@@ -39,7 +39,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 3. Repeat the mapping process for all data folders.
 
 4. Merge output files into a master file:
-   - **Usage:** `python main_merge.py`
+   - **Usage:** `python main_merge.py stars_vcf_map`
    - **Output:** `master_stars_vcf_to_vcf.csv`
    - **Output Location:** `results`
 
@@ -57,7 +57,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 3. Repeat the mapping process for all data folders.
 
 4. Merge output files into a master file:
-   - **Usage:** `python main_merge.py`
+   - **Usage:** `python main_merge.py stars_csv_map`
    - **Output:** `master_stars_vcf_to_csv.csv`
    - **Output Location:** `results`
 
