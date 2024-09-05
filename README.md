@@ -68,8 +68,8 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    
 2. Navigate to `src/exec`.
 
-3. Compile and run haplotype coverage analysis:
-   - **Usage:** `java HaplotypeDriver.java`
+3. Run haplotype coverage analysis:
+   - **Usage:** `sbatch main_coverage.sh`
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
 
