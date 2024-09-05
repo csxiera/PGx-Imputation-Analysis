@@ -35,9 +35,6 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Usage:** `python merge_master.py`
    - **Output:** `master_stars.csv`
    - **Output Location:** `results`
-  
-**Tip:** Use/modify `clean.sh` in `src` to quickly remove unnecessary files (such as .err and .out files from running batch scripts)
-   - **Usage:** `./clean.sh <folder-to-clean>`
 
 ## VCF-to-CSV mapping (previous method used in thesis):
 
