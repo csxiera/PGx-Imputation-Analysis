@@ -1,12 +1,12 @@
 ## Setup
 
-**Note:** Due to GitHub's file size limitations, the GWAS data is not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data`. <br>
+**Note:** Due to GitHub's file size limitations, the GWAS data and reference genomes are not included in this repository. Data can be downloaded from shared OneDrive folder named `Thesis Data`. <br>
 
 **Note:** The steps for QC filtering and normalization, outlined at the end of this file, have already been completed. The resulting `_norm.vcf` files, found in the shared folder, are used in the subsequent analyses.
 
 To prevent file path errors, store GWAS data in a directory named `PGx-Data` under the following subdirectories:
 
-| Folder Name    | Data Treatment                              |
+| Folder Name    | Data Types                            |
 |----------------|---------------------------------------------|
 | `1000g_m`      | 1000 Genomes Imputation, Modified QC        |
 | `1000g_m_30x`  | 1000 Genomes 30x Imputation, Modified QC    |
@@ -16,7 +16,8 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 | `topmed_s`     | TopMed Imputation, Standard QC              |
 | `unimputed_m`  | Unimputed, Modified QC                      |
 | `unimputed_s`  | Unimputed, Standard QC                      |
-| `raw`          | Original                                    |
+| `raw`          | Original GWAS Data                          |
+| `references`   | Human Reference Genomes                     |
 
 Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed. (maybe samtools and vcftools?)
 
