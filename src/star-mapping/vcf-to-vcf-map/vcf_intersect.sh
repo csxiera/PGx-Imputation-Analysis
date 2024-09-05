@@ -4,6 +4,14 @@ core_allele_dir=~/PGx-Imputation-Analysis/data/star-allele-defs
 data_dir=~/PGx-Data/"$1"
 output_dir=~/PGx-Imputation-Analysis/data/output-files/"$1"
 
+# Determine the build based on the folder name
+if [[ "$1" == "raw" || "$1" == "unimputed_s" || "$1" == "unimputed_m" ]]; then
+    build="37"
+else
+    build="38"
+fi
+echo "Detected build${build} for folder: $1"
+
 # Declare an associative array for genes and their corresponding chrs
 declare -A gene_chromosomes=(
     ["CYP2B6"]=19
@@ -24,7 +32,7 @@ process_gene() {
     echo "Processing $gene on chromosome $chromosome..."
 
     # Run bedtools intersect
-    bedtools intersect -a ${core_allele_dir}/${gene}/${gene}_corealleles.vcf.gz \
+    bedtools intersect -a $${core_allele_dir}/${gene}/${gene}_corealleles${build}.vcf.gz \
                        -b ${data_dir}/chr${chromosome}_norm.vcf.gz \
                        -wb -loj > ${output_dir}/${gene}_overlap.txt
 
