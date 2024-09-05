@@ -21,7 +21,7 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 
 Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, `java`, and `R` are installed. (maybe samtools and vcftools?)
 
-## VCF-to-VCF mapping (current method):
+## VCF-to-VCF mapping (current method)
 
 1. Navigate to `src/star-mapping/exec`.
 
@@ -36,7 +36,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_stars.csv`
    - **Output Location:** `results`
 
-## VCF-to-CSV mapping (previous method used in thesis):
+## VCF-to-CSV mapping (previous method used in thesis)
 
 1. Navigate to `src/star-mapping/exec`.
 
@@ -58,5 +58,16 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Usage:** `java HaplotypeDriver.java`
    - **Output:** `master_coverage.csv`
    - **Output Location:** `results`
+
+## Other
+
+Other useful programs can be found in the `src/data-processing` folder:
+
+| Program Name      | Description                 | Usage                           |
+|-------------------|----------------------------|---------------------------------|
+| `download.sh`     | Downloads files from the imputation server   | Modify wget urls and run `sbatch download.sh <data-folder>`   |
+| `unzip.sh`        | Unzips files downloaded from the imputation server   | `sbatch unzip.sh <data-folder> <password>`   |
+| `merge_cores.sh`  | Removes non-core alleles from PharmVar VCF data and merges core alleles into a single file   | `./merge_cores.sh`   |
+| `main_extract.sh` | Extracts HWE (Hardy-Weinberg Equilibrium), MAF (Minor Allele Frequency), and MISS (missingness) values for each variant   | `sbatch main_extract <data-folder>`   |
 
 ## Quality Control Filtering & Normalization
