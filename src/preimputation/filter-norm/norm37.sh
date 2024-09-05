@@ -8,7 +8,7 @@ fi
 
 folder="$1"
 output_dir=~/PGx-Data/"$folder"
-reference_genome=~/PGx-Imputation-Analysis/data/reference_genomes/Homo_sapiens.GRCh37.dna.primary_assembly.fa
+reference_genome=~/PGx-Data/references/Homo_sapiens.GRCh37.dna.primary_assembly.fa
 
 # List of chromosomes
 chromosomes=(7 10 12 13 19 22)
