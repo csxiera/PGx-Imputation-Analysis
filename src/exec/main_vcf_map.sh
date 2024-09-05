@@ -3,7 +3,7 @@
 #SBATCH --error=%j_map.err
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=6
-#SBATCH --mem=10G
+#SBATCH --mem=64G
 #SBATCH --time=1:00:00
 
 source ~/software/init-conda
