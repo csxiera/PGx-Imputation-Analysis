@@ -64,9 +64,9 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 **BUG:** The positions in 1000G VCF files do not align with PharmVar positions for either build 37 or 38, and the 1000G files lack rsid values. As a result, this method cannot be used to map 1000G build 38 data. 1000G build 37 data can be successfully mapped using this method, which was originally used in thesis.<br>
 
    - **Ex.** BP Position Ranges for Chr 22:
-      - PharmVar build 37: 42522613-42525755
-      - PharmVar build 38: 42127941-42126611
-      - 1000G Standard build 38: 15166841-16575950
+      - PharmVar build 37: 42522613 - 42525755
+      - PharmVar build 38: 42127941 - 42126611
+      - 1000G Standard build 38: 15166841 - 16575950
 
 ## Haplotype Analysis
 
