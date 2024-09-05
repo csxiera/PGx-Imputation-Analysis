@@ -73,7 +73,7 @@ Other useful programs can be founbd in the `src/data-processing/exec` folder:
 
 ## Quality Control Filtering & Normalization
 
-**Note:** All QC and imputation is run from the `src/data-processing/exec` folder
+**Note:** All QC and imputation is run from the `src/data-processing/exec` folder.
 
 ### Pre-imputation: 
 
@@ -120,5 +120,3 @@ Other useful programs can be founbd in the `src/data-processing/exec` folder:
       - **Ex.** `sbatch main_norm38.sh topmed_s`
 
 **Note:** Normalization can be performed using either GRCh37 or GRCh38 reference builds.
-
-
