@@ -5,8 +5,15 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-#source_dir=~/PGx-Imputation-Analysis/data/star-allele-defs/
 folder="$1"
+
+# Determine the build based on the folder name
+if [[ "$folder" == "raw" || "$folder" == "unimputed_s" || "$folder" == "unimputed_m" ]]; then
+    build="build37"
+else
+    build="build38"
+fi
+echo "Detected $build for folder: $folder"
 
 chromosomes=(7 10 12 13 19 22)
 
@@ -14,14 +21,15 @@ chromosomes=(7 10 12 13 19 22)
 find_stars(){
     local chr="$1"
     local dir="$2"
+    local build="$3"
 
     # Step 1: Extract all variants from VCF present in '*' list
-    ./extract.sh "$chr" "$dir"
+    ./extract.sh "$chr" "$dir" "$build"
 
     wait
 
     # Step 2: Combine extracted variants with associated '*'s
-    python get_stars.py "$chr" "$dir"
+    python get_stars.py "$chr" "$dir" "$build"
 
     wait
 

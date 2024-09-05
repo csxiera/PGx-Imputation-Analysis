@@ -31,11 +31,12 @@ def compare_csv_files(file1, file2, output):
 if __name__ == "__main__":
     chrom = sys.argv[1]
     folder = sys.argv[2]
+    build = sys.argv[3]
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
 
-    file1_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'star-allele-defs', f'chr_{chrom}.csv')
+    file1_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'star-allele-defs', build, f'chr_{chrom}.csv')
     file2_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_matches.csv')
     output_file_path = os.path.join(base_dir, 'PGx-Imputation-Analysis', 'data', 'output-files', folder, f'chr_{chrom}_stars.csv')
     

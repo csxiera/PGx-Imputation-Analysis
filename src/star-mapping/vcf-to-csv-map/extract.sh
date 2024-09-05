@@ -6,11 +6,13 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-# Define directories
 chr="$1"
 folder="$2"
+build="$3"
+
+# Define directories
 data_dir=~/PGx-Data/"$folder"
-star_dir=~/PGx-Imputation-Analysis/data/star-allele-defs
+star_dir=~/PGx-Imputation-Analysis/data/star-allele-defs/"$build"
 output_dir=~/PGx-Imputation-Analysis/data/output-files/"$folder"
 
 cd "$data_dir"
