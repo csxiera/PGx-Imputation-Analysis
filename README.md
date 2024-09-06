@@ -6,18 +6,20 @@
 
 To prevent file path errors, store GWAS data in a directory named `PGx-Data` under the following subdirectories:
 
-| Folder Name    | Data Types                            |
-|----------------|---------------------------------------------|
-| `1000g_m`      | 1000 Genomes Imputation, Modified QC        |
-| `1000g_m_30x`  | 1000 Genomes 30x Imputation, Modified QC    |
-| `1000g_s`      | 1000 Genomes Imputation, Standard QC        |
-| `1000g_s_30x`  | 1000 Genomes 30x Imputation, Standard QC    |
-| `topmed_m`     | TopMed Imputation, Modified QC              |
-| `topmed_s`     | TopMed Imputation, Standard QC              |
-| `unimputed_m`  | Unimputed, Modified QC                      |
-| `unimputed_s`  | Unimputed, Standard QC                      |
-| `raw`          | Original GWAS Data                          |
-| `references`   | Human Reference Genomes                     |
+| Folder Name        | Data Types                                          |
+|--------------------|-----------------------------------------------------|
+| `1000g_m_b37`      | 1000 Genomes Imputation, Modified QC, GRCh37        |
+| `1000g_m_b38`      | 1000 Genomes Imputation, Modified QC, GRCh38        |
+| `1000g_m_30x_b38`  | 1000 Genomes 30x Imputation, Modified QC, GRCh38    |
+| `1000g_s_b37`      | 1000 Genomes Imputation, Standard QC, GRCh37        |
+| `1000g_s_b38`      | 1000 Genomes Imputation, Standard QC, GRCh38        |
+| `1000g_s_30x_b38`  | 1000 Genomes 30x Imputation, Standard QC, GRCh38    |
+| `topmed_m_b38`     | TopMed Imputation, Modified QC, GRCh38              |
+| `topmed_s_b38`     | TopMed Imputation, Standard QC, GRCh38              |
+| `unimputed_m_b37`  | Unimputed, Modified QC, GRCh37                      |
+| `unimputed_s_b37`  | Unimputed, Standard QC, GRCh37                      |
+| `raw_b37`          | Original GWAS Data, GRCh37                          |
+| `reference_genomes`| Human Reference Genomes                             |
 
 Both `PGx-Data` and `PGx-Imputation-Analysis` directories must be in the same main/home folder
 
@@ -61,7 +63,7 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_stars_vcf_to_csv.csv`
    - **Output Location:** `results`
   
-**BUG:** The positions in 1000G VCF files do not align with PharmVar positions for either build 37 or 38, and the 1000G files lack rsid values. As a result, this method cannot be used to map 1000G build 38 data. 1000G build 37 data can be successfully mapped using this method, which was originally used in thesis.<br>
+**IMPORTANT:** The `1000g b38` files do not align with the PharmVar positions and lack rsid values. As a result, this method cannot be used for this data.
 
    - **Ex.** BP Position Ranges for Chr 22:
       - PharmVar build 37: 42522613 - 42525755
