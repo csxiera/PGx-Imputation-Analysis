@@ -8,17 +8,15 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 
 | Folder Name        | Data Types                                          |
 |--------------------|-----------------------------------------------------|
-| `1000g_m_b37`      | 1000 Genomes Imputation, Modified QC, GRCh37        |
-| `1000g_m_b38`      | 1000 Genomes Imputation, Modified QC, GRCh38        |
-| `1000g_m_30x_b38`  | 1000 Genomes 30x Imputation, Modified QC, GRCh38    |
-| `1000g_s_b37`      | 1000 Genomes Imputation, Standard QC, GRCh37        |
-| `1000g_s_b38`      | 1000 Genomes Imputation, Standard QC, GRCh38        |
-| `1000g_s_30x_b38`  | 1000 Genomes 30x Imputation, Standard QC, GRCh38    |
-| `topmed_m_b38`     | TopMed Imputation, Modified QC, GRCh38              |
-| `topmed_s_b38`     | TopMed Imputation, Standard QC, GRCh38              |
-| `unimputed_m_b37`  | Unimputed, Modified QC, GRCh37                      |
-| `unimputed_s_b37`  | Unimputed, Standard QC, GRCh37                      |
-| `raw_b37`          | Original GWAS Data, GRCh37                          |
+| `1000g_m`          | 1000 Genomes Imputation, Modified QC, GRCh38        |
+| `1000g_m_30x`      | 1000 Genomes 30x Imputation, Modified QC, GRCh38    |
+| `1000g_s`          | 1000 Genomes Imputation, Standard QC, GRCh38        |
+| `1000g_s_30x`      | 1000 Genomes 30x Imputation, Standard QC, GRCh38    |
+| `topmed_m`         | TopMed Imputation, Modified QC, GRCh38              |
+| `topmed_s`         | TopMed Imputation, Standard QC, GRCh38              |
+| `unimputed_m`      | Unimputed, Modified QC, GRCh37                      |
+| `unimputed_s`      | Unimputed, Standard QC, GRCh37                      |
+| `raw`              | Original GWAS Data, GRCh37                          |
 | `reference_genomes`| Human Reference Genomes                             |
 
 Both `PGx-Data` and `PGx-Imputation-Analysis` directories must be in the same main/home folder
@@ -63,11 +61,12 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
    - **Output:** `master_stars_vcf_to_csv.csv`
    - **Output Location:** `results`
   
-**IMPORTANT:** The `1000g b38` files do not align with the PharmVar positions and lack rsid values. As a result, this method cannot be used for this data.
+**IMPORTANT/BUG:** The `1000g` files do not align with the PharmVar positions and lack rsid values. As a result, this method cannot be used for 1000g data. It is unclear why this method was successful in original thesis as 0 matches are identified now.
 
    - **Ex.** BP Position Ranges for Chr 22:
       - PharmVar build 37: 42522613 - 42525755
       - PharmVar build 38: 42127941 - 42126611
+      - 1000G Standard build 37: 16439593 - 16441330
       - 1000G Standard build 38: 15166841 - 16575950
 
 ## Haplotype Analysis
