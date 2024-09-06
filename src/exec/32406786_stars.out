@@ -1,0 +1,26 @@
+Detected build37 for folder: raw
+Variants mapped & extracted
+Matching rows have been written to /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_13_stars.csv
+Stars identified for chr '13'
+Variants mapped & extracted
+Matching rows have been written to /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_7_stars.csv
+Stars identified for chr '7'
+Variants mapped & extracted
+Matching rows have been written to /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_19_stars.csv
+Stars identified for chr '19'
+Variants mapped & extracted
+Matching rows have been written to /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_12_stars.csv
+Stars identified for chr '12'
+Variants mapped & extracted
+Matching rows have been written to /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_10_stars.csv
+Stars identified for chr '10'
+Variants mapped & extracted
+Matching rows have been written to /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_22_stars.csv
+Stars identified for chr '22'
+Merged CSV file saved successfully.
+Deleted file: /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_13_stars.csv
+Deleted file: /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_7_stars.csv
+Deleted file: /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_19_stars.csv
+Deleted file: /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_12_stars.csv
+Deleted file: /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_10_stars.csv
+Deleted file: /home/courtney.lenz/PGx-Imputation-Analysis/data/output-files/raw/chr_22_stars.csv
