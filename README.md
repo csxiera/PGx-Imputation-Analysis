@@ -19,6 +19,8 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 | `raw`              | Original GWAS Data, GRCh37                          |
 | `reference_genomes`| Human Reference Genomes                             |
 
+**Note:** Original thesis used 1000G build 37. Programs have been updated to use 1000G build 38 
+
 Both `PGx-Data` and `PGx-Imputation-Analysis` directories must be in the same main/home folder
 
 Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`, `python`, and `java` are installed. To use a different conda environment, the conda activation line in all executable batch scripts must be changed:<br>
