@@ -19,7 +19,7 @@ To prevent file path errors, store GWAS data in a directory named `PGx-Data` und
 | `raw`              | Original GWAS Data, GRCh37                          |
 | `reference_genomes`| Human Reference Genomes                             |
 
-**Note:** Original thesis used 1000G build 37. Programs have been updated to use 1000G build 38 
+**Note:** For 1000 Genomes, GRCh37 data was used in the original thesis. Programs have been updated to use GRCh38 data.
 
 Both `PGx-Data` and `PGx-Imputation-Analysis` directories must be in the same main/home folder
 
