@@ -93,6 +93,7 @@ Other useful programs in the `src/exec` folder:
 | `main_extract.sh` | Extracts HWE (Hardy-Weinberg Equilibrium), MAF (Minor Allele Frequency), and MISS (missingness) values for each variant   | `sbatch main_extract <data-folder>`   |
 | `clean.sh`        | Removes unneeded logging files (such as `.err` and `.out` from submitting batch scripts) from any folder  | Modify files to remove and run `./clean.sh <folder-path>`   |
 
+All other relevant documents, including the thesis paper, for this project can be found in the `documents` folder.
 
 ## Quality Control Filtering & Normalization
 
