@@ -76,8 +76,8 @@ Ensure a conda environment named `pgx` has been create and `bcftools`, `plink2`,
 2. Navigate to `src/exec`.
 
 3. Run haplotype coverage analysis:
-   - **Usage:** `sbatch main_coverage.sh`
-   - **Output:** `master_coverage.csv`
+   - **Usage:** `sbatch main_coverage.sh <vcf-to-vcf|vcf-to-csv>`
+   - **Output:** `master_coverage_<vcf-to-vcf|vcf-to-csv>.csv`
    - **Output Location:** `results`
 
   
